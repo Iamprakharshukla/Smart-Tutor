@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="auth-card">
+<h1>Upload PDF</h1>
+<form method="POST" enctype="multipart/form-data">
+<input type="file" name="pdf" accept=".pdf" required>
+<button type="submit">Upload</button>
+</form>
+</div>
+{% endblock %}

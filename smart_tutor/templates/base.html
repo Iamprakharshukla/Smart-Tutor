@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Smart Tutor</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+
+<div class="logo">
+<i class="fa-solid fa-brain"></i>
+<span>Smart Tutor</span>
+</div>
+
+<div class="nav-links">
+
+{% if current_user.is_authenticated %}
+
+<a href="/">
+<i class="fa-solid fa-house"></i> Home
+</a>
+
+<a href="/dashboard">
+<i class="fa-solid fa-chart-line"></i> Dashboard
+</a>
+
+<a href="/logout">
+<i class="fa-solid fa-right-from-bracket"></i> Logout
+</a>
+
+{% else %}
+
+<a href="/login">
+<i class="fa-solid fa-right-to-bracket"></i> Login
+</a>
+
+<a href="/register">
+<i class="fa-solid fa-user-plus"></i> Register
+</a>
+
+{% endif %}
+
+</div>
+
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div class="alert-box">
+{% for msg in messages %}
+<div class="alert">{{ msg }}</div>
+{% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+
+{% block content %}{% endblock %}
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+<p>© 2026 Smart Tutor | AI Powered Learning</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="result-page">
+
+<div class="result-header">
+
+{% set percent = ((score / total) * 100) | round(2) if total > 0 else 0 %}
+
+{% if percent >= 80 %}
+<div class="result-icon success">
+<i class="fa-solid fa-trophy"></i>
+</div>
+<h1>Excellent Work!</h1>
+
+{% elif percent >= 60 %}
+<div class="result-icon good">
+<i class="fa-solid fa-medal"></i>
+</div>
+<h1>Good Job!</h1>
+
+{% else %}
+<div class="result-icon improve">
+<i class="fa-solid fa-chart-line"></i>
+</div>
+<h1>Keep Practicing!</h1>
+{% endif %}
+
+<p class="subtitle">
+Your quiz has been evaluated successfully.
+</p>
+
+</div>
+
+
+<div class="stats-grid">
+
+<div class="stat-card">
+<i class="fa-solid fa-check-circle icon green"></i>
+<h2>{{ score }}</h2>
+<p>Correct Answers</p>
+</div>
+
+<div class="stat-card">
+<i class="fa-solid fa-list icon blue"></i>
+<h2>{{ total }}</h2>
+<p>Total Questions</p>
+</div>
+
+<div class="stat-card">
+<i class="fa-solid fa-bullseye icon orange"></i>
+<h2>{{ percent }}%</h2>
+<p>Accuracy</p>
+</div>
+
+</div>
+
+
+<div class="dashboard-card">
+
+<h2>
+<i class="fa-solid fa-clipboard-check"></i>
+Detailed Feedback
+</h2>
+
+{% for f in feedback %}
+
+<div class="feedback-card">
+
+{% if f.status %}
+<div class="feedback-status correct">
+<i class="fa-solid fa-circle-check"></i>
+Correct
+</div>
+{% else %}
+<div class="feedback-status wrong">
+<i class="fa-solid fa-circle-xmark"></i>
+Wrong
+</div>
+{% endif %}
+
+<p><strong>Your Answer:</strong> {{ f.user }}</p>
+<p><strong>Correct Answer:</strong> {{ f.correct }}</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+
+<div class="dashboard-card">
+
+<h2>
+<i class="fa-solid fa-bolt"></i>
+Quick Actions
+</h2>
+
+<div class="action-buttons">
+
+<a href="/" class="btn-action">
+<i class="fa-solid fa-house"></i>
+Home
+</a>
+
+<a href="/dashboard" class="btn-action green">
+<i class="fa-solid fa-chart-line"></i>
+Dashboard
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

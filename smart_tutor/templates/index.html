@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="home-page">
+
+<h1>
+<i class="fa-solid fa-brain"></i>
+Smart Paragraph Tutor
+</h1>
+
+<p class="subtitle">
+Learn smarter with AI. Ask questions, generate quizzes, upload PDFs, and test yourself instantly.
+</p>
+
+
+<!-- ASK QUESTION SECTION -->
+<div class="dashboard-card">
+
+<h2>
+<i class="fa-solid fa-question-circle"></i>
+Ask Question From Paragraph
+</h2>
+
+<form method="POST" action="/ask">
+
+<textarea
+name="paragraph"
+placeholder="Paste your paragraph here..."
+required>{{ paragraph or '' }}</textarea>
+
+<input
+type="text"
+name="question"
+placeholder="Ask any question..."
+required>
+
+<button type="submit">
+<i class="fa-solid fa-magnifying-glass"></i>
+Get Answer
+</button>
+
+</form>
+
+
+{% if answer %}
+
+<div class="answer-box">
+
+<h3>
+<i class="fa-solid fa-lightbulb"></i>
+AI Answer
+</h3>
+
+<p>{{ answer }}</p>
+
+</div>
+
+{% endif %}
+
+</div>
+
+
+
+<!-- QUIZ SECTION -->
+<div class="dashboard-card">
+
+<h2>
+<i class="fa-solid fa-file-pen"></i>
+Generate Quiz
+</h2>
+
+<form method="POST" action="/quiz">
+
+<textarea
+name="paragraph"
+placeholder="Paste paragraph for quiz generation..."
+required></textarea>
+
+<button type="submit">
+<i class="fa-solid fa-bolt"></i>
+Generate Quiz
+</button>
+
+</form>
+
+</div>
+
+
+
+<!-- PDF SECTION -->
+<div class="dashboard-card">
+
+<h2>
+<i class="fa-solid fa-file-pdf"></i>
+PDF Learning Assistant
+</h2>
+
+<p style="margin-bottom:18px;">
+Upload notes, chapters, books or study PDFs and ask AI questions instantly.
+</p>
+
+<div style="display:flex; gap:14px; flex-wrap:wrap;">
+
+<a href="/upload-pdf" class="btn-action">
+<i class="fa-solid fa-upload"></i>
+Upload PDF
+</a>
+
+<a href="/pdf-chat" class="btn-action green">
+<i class="fa-solid fa-comments"></i>
+Ask From PDF
+</a>
+
+</div>
+
+</div>
+
+
+
+<!-- FEATURE CARDS -->
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<i class="fa-solid fa-robot icon blue"></i>
+
+<h3>AI Powered</h3>
+
+<p>Uses Hugging Face NLP models</p>
+
+</div>
+
+
+<div class="stat-card">
+
+<i class="fa-solid fa-book-open icon green"></i>
+
+<h3>Instant Quiz</h3>
+
+<p>Generate quizzes in seconds</p>
+
+</div>
+
+
+<div class="stat-card">
+
+<i class="fa-solid fa-file-lines icon orange"></i>
+
+<h3>PDF Assistant</h3>
+
+<p>Upload files and ask AI anything</p>
+
+</div>
+
+
+<div class="stat-card">
+
+<i class="fa-solid fa-chart-line icon purple"></i>
+
+<h3>Track Progress</h3>
+
+<p>See dashboard performance stats</p>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

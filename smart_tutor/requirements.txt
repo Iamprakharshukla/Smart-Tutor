@@ -1,0 +1,9 @@
+flask
+flask-login
+transformers
+torch
+sentencepiece
+werkzeug
+accelerate
+protobuf
+safetensors

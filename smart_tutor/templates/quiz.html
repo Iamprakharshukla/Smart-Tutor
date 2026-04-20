@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="quiz-page">
+
+<div class="quiz-header">
+
+<h1>
+<i class="fa-solid fa-file-circle-question"></i>
+AI Quiz Challenge
+</h1>
+
+<p class="subtitle">
+Answer all questions and test your understanding.
+</p>
+
+</div>
+
+
+<form method="post" action="/submit" class="quiz-form">
+
+{% for q in questions %}
+
+<div class="quiz-card">
+
+<div class="question-number">
+Question {{ loop.index }}
+</div>
+
+<h3 class="question-text">
+{{ q[0] }}
+</h3>
+
+<input
+type="text"
+name="a{{ loop.index0 }}"
+placeholder="Type your answer here..."
+required>
+
+</div>
+
+{% endfor %}
+
+
+<div class="quiz-actions">
+
+<button type="submit" class="submit-btn">
+<i class="fa-solid fa-paper-plane"></i>
+Submit Answers
+</button>
+
+</div>
+
+</form>
+
+
+<div class="dashboard-card">
+
+<h3>
+<i class="fa-solid fa-lightbulb"></i>
+Tips
+</h3>
+
+<ul class="tips-list">
+<li>Read each question carefully.</li>
+<li>Use short and accurate answers.</li>
+<li>Try to answer without re-reading paragraph.</li>
+</ul>
+
+</div>
+
+</div>
+
+{% endblock %}

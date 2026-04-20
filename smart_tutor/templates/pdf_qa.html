@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="dashboard-card">
+
+<h1>Ask Questions From PDF</h1>
+
+<form method="POST">
+
+<input name="question" placeholder="Ask question from PDF">
+
+<button>Get Answer</button>
+
+</form>
+
+{% if answer %}
+<h3>Answer:</h3>
+<p>{{ answer }}</p>
+{% endif %}
+
+</div>
+
+{% endblock %}

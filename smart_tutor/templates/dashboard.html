@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="dashboard-page">
+
+    <!-- Header -->
+    <div class="dashboard-card">
+
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+
+            <div style="display:flex; align-items:center; gap:18px;">
+
+                <div class="auth-icon-box">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div>
+                    <h1 style="margin-bottom:6px;">Welcome, {{ current_user.username }}</h1>
+                    <p class="subtitle">Track your learning progress and quiz performance</p>
+                </div>
+
+            </div>
+
+            <a href="/edit-profile" class="btn-action">
+                <i class="fa-solid fa-pen"></i>
+                Edit Profile
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- Stats -->
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <i class="fa-solid fa-book-open icon blue"></i>
+            <h2>{{ quizzes }}</h2>
+            <p>Total Quizzes</p>
+        </div>
+
+        <div class="stat-card">
+            <i class="fa-solid fa-bullseye icon green"></i>
+            <h2>{{ acc }}%</h2>
+            <p>Accuracy</p>
+        </div>
+
+        <div class="stat-card">
+            <i class="fa-solid fa-fire icon orange"></i>
+
+            <h2>
+                {% if acc >= 80 %}
+                    Excellent
+                {% elif acc >= 60 %}
+                    Good
+                {% else %}
+                    Improve
+                {% endif %}
+            </h2>
+
+            <p>Performance</p>
+        </div>
+
+    </div>
+
+
+    <!-- Insights -->
+    <div class="dashboard-card">
+
+        <h3>
+            <i class="fa-solid fa-lightbulb"></i>
+            Quick Insights
+        </h3>
+
+        <ul class="tips-list">
+
+            <li>Keep practicing daily quizzes.</li>
+
+            <li>
+                {% if acc >= 80 %}
+                    You are performing very well. Maintain consistency.
+                {% elif acc >= 60 %}
+                    Nice progress. Focus on weak areas.
+                {% else %}
+                    Practice more paragraphs to improve score.
+                {% endif %}
+            </li>
+
+            <li>Use Ask Question mode for revision.</li>
+
+            <li>Try longer paragraphs for better challenge.</li>
+
+        </ul>
+
+    </div>
+
+
+    <!-- Progress -->
+    <div class="dashboard-card">
+
+        <h3>
+            <i class="fa-solid fa-chart-simple"></i>
+            Learning Progress
+        </h3>
+
+        <div style="margin-top:18px;">
+
+            <p style="margin-bottom:10px;">Accuracy Level</p>
+
+            <div style="width:100%; height:16px; background:rgba(255,255,255,0.08); border-radius:50px; overflow:hidden;">
+
+                <div style="width:{{ acc }}%; height:100%; background:linear-gradient(90deg,#22c55e,#38bdf8); border-radius:50px;"></div>
+
+            </div>
+
+            <p style="margin-top:12px;">{{ acc }}% Completed Performance Score</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Quick Actions -->
+    <div class="dashboard-card">
+
+        <h3>
+            <i class="fa-solid fa-rocket"></i>
+            Quick Actions
+        </h3>
+
+        <div style="margin-top:18px; display:flex; gap:14px; flex-wrap:wrap;">
+
+            <a href="/" class="btn-action">
+                <i class="fa-solid fa-house"></i>
+                Home
+            </a>
+
+            <a href="/" class="btn-action green">
+                <i class="fa-solid fa-file-circle-question"></i>
+                Start Quiz
+            </a>
+
+            <a href="/logout" class="btn-action">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- Motivation -->
+    <div class="dashboard-card">
+
+        <h3>
+            <i class="fa-solid fa-star"></i>
+            Motivation
+        </h3>
+
+        <p style="margin-top:14px;">
+
+            {% if acc >= 80 %}
+                Outstanding work! You are mastering your learning goals.
+            {% elif acc >= 60 %}
+                Good momentum! Keep pushing and you'll reach excellence.
+            {% else %}
+                Every expert starts somewhere. Keep practicing daily.
+            {% endif %}
+
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}
