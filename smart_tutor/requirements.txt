@@ -7,3 +7,4 @@ werkzeug
 accelerate
 protobuf
 safetensors
+gunicorn
